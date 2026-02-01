@@ -8,7 +8,6 @@ connectDB();
 
 const app = express();
 app.use(cors(
-  origin: "https://697f76d71e35dac49638b901--beautiful-nasturtium-daea46.netlify.app/"
 ));
 app.use(express.json());
 
