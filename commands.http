@@ -1,0 +1,168 @@
+###
+# Menu Routes
+###
+
+# @name getMenu
+GET http://localhost:5000/api/menu
+
+###
+
+# @name getMenuWithFilters
+GET http://localhost:5000/api/menu?category=Main%20Course&isAvailable=true&minPrice=100&maxPrice=300
+
+###
+
+# @name searchMenu
+GET http://localhost:5000/api/menu/search?q=pizza
+
+###
+
+# @name getMenuItem
+GET http://localhost:5000/api/menu/697edeca873697b13905dfee
+
+###
+
+# @name createMenuItem
+POST http://localhost:5000/api/menu
+Content-Type: application/json
+
+[
+  {
+    "name": "Margherita Pizza",
+    "description": "Classic cheese pizza with tomato sauce",
+    "category": "Main Course",
+    "price": 299,
+    "ingredients": ["Cheese", "Tomato", "Flour"],
+    "isAvailable": true,
+    "preparationTime": 15,
+    "imageUrl": "https://example.com/pizza.jpg"
+  },
+  {
+    "name": "Veg Burger",
+    "description": "Grilled veg patty with lettuce and sauce",
+    "category": "Main Course",
+    "price": 199,
+    "ingredients": ["Bun", "Potato", "Lettuce", "Sauce"],
+    "isAvailable": true,
+    "preparationTime": 10,
+    "imageUrl": "https://example.com/burger.jpg"
+  },
+  {
+    "name": "French Fries",
+    "description": "Crispy fried potatoes",
+    "category": "Appetizer",
+    "price": 120,
+    "ingredients": ["Potato", "Salt", "Oil"],
+    "isAvailable": true,
+    "preparationTime": 8,
+    "imageUrl": "https://example.com/fries.jpg"
+  },
+  {
+    "name": "Chocolate Cake",
+    "description": "Rich chocolate dessert cake",
+    "category": "Dessert",
+    "price": 180,
+    "ingredients": ["Flour", "Cocoa", "Sugar", "Egg"],
+    "isAvailable": true,
+    "preparationTime": 20,
+    "imageUrl": "https://example.com/cake.jpg"
+  },
+  {
+    "name": "Coke",
+    "description": "Chilled soft drink",
+    "category": "Beverage",
+    "price": 60,
+    "ingredients": ["Carbonated Water", "Sugar"],
+    "isAvailable": true,
+    "preparationTime": 2,
+    "imageUrl": "https://example.com/coke.jpg"
+  },
+  {
+    "name": "Pasta Alfredo",
+    "description": "Creamy white sauce pasta",
+    "category": "Main Course",
+    "price": 250,
+    "ingredients": ["Pasta", "Cream", "Cheese"],
+    "isAvailable": false,
+    "preparationTime": 18,
+    "imageUrl": "https://example.com/pasta.jpg"
+  }
+]
+
+###
+
+# @name updateMenuItem
+PUT http://localhost:5000/api/menu/697edeca873697b13905dfee
+Content-Type: application/json
+
+{
+  "price": 95
+}
+
+###
+
+# @name deleteMenuItem
+DELETE http://localhost:5000/api/menu/60c72b2f5f1b2c001f3e8b8c
+
+###
+
+# @name toggleAvailability
+PATCH http://localhost:5000/api/menu/697edeca873697b13905dfeeb2f5f1b2c001f3e8b8c/availability
+
+###
+# Order Routes
+###
+
+# @name getOrders
+GET http://localhost:5000/api/orders
+
+###
+
+# @name getOrdersWithFilters
+GET http://localhost:5000/api/orders?status=pending&page=1&limit=2
+
+###
+
+# @name getOrder
+GET http://localhost:5000/api/orders/697edeca873697b13905dfee
+
+###
+
+# @name createOrder
+POST http://localhost:5000/api/orders
+Content-Type: application/json
+
+{
+  "customerName": "John Doe",
+  "tableNumber": 3,
+  "items": [
+    {
+      "menuItem": "697edeca873697b13905dfed",
+      "quantity": 2,
+      "price": 199
+    },
+    {
+      "menuItem": "697edeca873697b13905dffa",
+      "quantity": 1,
+      "price": 90
+    }
+  ],
+  "totalAmount": 488,
+  "status": "Pending"
+}
+
+
+###
+
+# @name updateOrderStatus
+PATCH http://localhost:5000/api/orders/60c72b2f5f1b2c001f3e8b8d/status
+Content-Type: application/json
+
+{
+  "status": "completed"
+}
+
+###
+
+# @name getTopItems
+GET http://localhost:5000/api/orders/top-items
