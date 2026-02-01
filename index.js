@@ -7,9 +7,11 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors(
-  origin: "https://beautiful-nasturtium-daea46.netlify.app/"
-));
+app.use(cors({
+  origin: "https://beautiful-nasturtium-daea46.netlify.app",
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  credentials: true
+}));
 app.use(express.json());
 
 app.get("/", (req, res) => {
